@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var state:RecordingState = .readyToRecord
+    
+    
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
@@ -22,15 +25,29 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.stopButton.isEnabled = false
+        updateUi()
     }
     
     
     @IBAction func startRecordButtonPressed(_ sender: Any) {
+        toggleState()
     }
     
     
     @IBAction func stopRecordingButtonPressed(_ sender: Any) {
+        toggleState()
+    }
+    
+    
+    func toggleState(){
+        state = state == .readyToRecord ? .recording : .readyToRecord
+        updateUi()
+    }
+    
+    func updateUi(){
+        messageLabel.text = state == .readyToRecord ? "Tap to record" : "Recording, tap to stop"
+        startButton.isEnabled = state == .readyToRecord
+        stopButton.isEnabled = state == .recording
     }
     
 }
