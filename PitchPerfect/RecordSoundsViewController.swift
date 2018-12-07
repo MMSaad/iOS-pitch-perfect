@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RecordSoundsViewController.swift
 //  PitchPerfect
 //
 //  Created by Mustafa Muhammad on 12/4/18.
@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class RecordSoundsViewController: UIViewController {
 
     var state:RecordingState = .readyToRecord
     
+    var audioRecorder:AVAudioRecorder!
     
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var messageLabel: UILabel!
@@ -31,11 +34,26 @@ class RecordSoundsViewController: UIViewController {
     
     @IBAction func startRecordButtonPressed(_ sender: Any) {
         toggleState()
+        let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
+        let recordingName = "recordedVoice.wav"
+        let pathArray = [dirPath, recordingName]
+        let filePath = URL(string: pathArray.joined(separator: "/"))
+        print(filePath)
+        let session = AVAudioSession.sharedInstance()
+        try! session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
+        
+        try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
+        audioRecorder.isMeteringEnabled = true
+        audioRecorder.prepareToRecord()
+        audioRecorder.record()
     }
     
     
     @IBAction func stopRecordingButtonPressed(_ sender: Any) {
         toggleState()
+        audioRecorder.stop()
+        let audioSession = AVAudioSession.sharedInstance()
+        try! audioSession.setActive(false)
     }
     
     
