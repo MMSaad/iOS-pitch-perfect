@@ -31,9 +31,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6P-Cc-z0h">
-                                <rect key="frame" x="134.5" y="457.5" width="106" height="30"/>
-                                <state key="normal" title="Stop Recording"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6P-Cc-z0h">
+                                <rect key="frame" x="155.5" y="457.5" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="VQu-9w-8Jv"/>
+                                    <constraint firstAttribute="width" constant="64" id="psX-Pe-gSx"/>
+                                </constraints>
+                                <state key="normal" image="Stop"/>
                                 <connections>
                                     <action selector="stopRecordingButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dPN-kD-SwO"/>
                                 </connections>
@@ -64,5 +68,6 @@
     </scenes>
     <resources>
         <image name="Record" width="155" height="155"/>
+        <image name="Stop" width="155" height="155"/>
     </resources>
 </document>
