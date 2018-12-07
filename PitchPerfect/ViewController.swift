@@ -10,11 +10,26 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var stopButton: UIButton!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-
+    
+    
+    @IBAction func startRecordButtonPressed(_ sender: Any) {
+    }
+    
+    
+    @IBAction func stopRecordingButtonPressed(_ sender: Any) {
+    }
+    
 }
 
