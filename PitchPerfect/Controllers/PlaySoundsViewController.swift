@@ -38,7 +38,6 @@ class PlaySoundsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(recordedAudioURL)
         setupAudio()
     }
     

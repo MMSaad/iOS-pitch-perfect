@@ -101,7 +101,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         if(flag){
             performSegue(withIdentifier: "stopRecording", sender: recorder.url)
         }else{
-            DialogsHelpers().presentSimpleDialog(controller:self,title:Alerts.RecordingFailedTitle,message:Alerts.RecordingFailedMessage)
+        DialogsHelpers().presentSimpleDialog(controller:self,title:Alerts.RecordingFailedTitle,message:Alerts.RecordingFailedMessage)
         }
     }
     
