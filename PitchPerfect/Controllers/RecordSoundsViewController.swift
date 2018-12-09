@@ -33,7 +33,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "stopRecording"){
+        if(segue.identifier == SeguesNames.stopRecording){
             let controller = segue.destination as! PlaySoundsViewController
             let url = sender as! URL
             controller.recordedAudioURL = url
@@ -88,7 +88,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func updateUi(){
-        messageLabel.text = state == .readyToRecord ? "Tap to record" : "Recording, tap to stop"
+        messageLabel.text = state == .readyToRecord ? Labels.tapToRecord  : Labels.recording
         startButton.isEnabled = state == .readyToRecord
         stopButton.isEnabled = state == .recording
     }
@@ -99,9 +99,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if(flag){
-            performSegue(withIdentifier: "stopRecording", sender: recorder.url)
+            performSegue(withIdentifier: SeguesNames.stopRecording, sender: recorder.url)
         }else{
-        DialogsHelpers().presentSimpleDialog(controller:self,title:Alerts.RecordingFailedTitle,message:Alerts.RecordingFailedMessage)
+        
+            DialogsHelpers().presentSimpleDialog(controller: self, title: Alerts.RecordingFailedTitle, message: Alerts.RecordingFailedMessage)
         }
     }
     

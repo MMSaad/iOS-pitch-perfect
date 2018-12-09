@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Recording controller states
+/// Used to toggle UI views according to current recording status
 public enum RecordingState{
     case readyToRecord, recording
 }

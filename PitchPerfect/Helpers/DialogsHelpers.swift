@@ -10,6 +10,14 @@ import UIKit
 
 public class DialogsHelpers{
     
+    /// This function present UI Alert with `title` and `message`
+    ///
+    ///
+    /// - Parameter controller: UI Viewcontroller to present the dialog on it
+    ///
+    /// - Parameter title: Dialog title
+    ///
+    /// - Parameter message: Dialog messgae/body
     func presentSimpleDialog(controller:UIViewController,title:String,message:String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Alerts.DismissAlert, style: .default, handler: nil))

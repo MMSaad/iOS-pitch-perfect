@@ -25,4 +25,13 @@ struct Alerts {
     static let ErrorAccessingMicrophoneMessage = "Please grant Pitch Perfect access to your microphone to be able to record sounds"
 }
 
+struct SeguesNames{
+    static let stopRecording = "stopRecording"
+}
+
+struct Labels{
+    static let tapToRecord = "Tap to record"
+    static let recording = "Recording, tap to stop"
+}
+
 
