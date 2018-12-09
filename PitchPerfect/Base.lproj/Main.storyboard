@@ -152,13 +152,33 @@
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="S9G-TO-cKR" firstAttribute="centerX" secondItem="jOG-oZ-mJu" secondAttribute="centerX" id="3gh-Y8-CdY"/>
+                            <constraint firstItem="S9G-TO-cKR" firstAttribute="trailing" secondItem="jOG-oZ-mJu" secondAttribute="trailing" constant="-8" id="5zq-eN-PlB"/>
                             <constraint firstItem="8ld-EO-7Fj" firstAttribute="trailing" secondItem="jOG-oZ-mJu" secondAttribute="trailing" id="7Gx-8O-EMz"/>
+                            <constraint firstItem="8ld-EO-7Fj" firstAttribute="trailing" secondItem="jOG-oZ-mJu" secondAttribute="trailing" constant="-80" id="Kbb-sF-wvd"/>
+                            <constraint firstItem="S9G-TO-cKR" firstAttribute="centerY" secondItem="jOG-oZ-mJu" secondAttribute="centerY" id="NQo-C6-R87"/>
                             <constraint firstItem="8ld-EO-7Fj" firstAttribute="leading" secondItem="jOG-oZ-mJu" secondAttribute="leading" id="Q2D-pl-PFR"/>
                             <constraint firstItem="jOG-oZ-mJu" firstAttribute="bottom" secondItem="8ld-EO-7Fj" secondAttribute="bottom" constant="88" id="dpZ-cL-aom"/>
+                            <constraint firstItem="8ld-EO-7Fj" firstAttribute="bottom" secondItem="jOG-oZ-mJu" secondAttribute="bottom" id="mSM-us-UAc"/>
                             <constraint firstItem="S9G-TO-cKR" firstAttribute="top" secondItem="8ld-EO-7Fj" secondAttribute="bottom" constant="8" id="uaG-IP-aDX"/>
                             <constraint firstItem="8ld-EO-7Fj" firstAttribute="top" secondItem="jOG-oZ-mJu" secondAttribute="top" id="xXX-rD-8D5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jOG-oZ-mJu"/>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="7Gx-8O-EMz"/>
+                                <exclude reference="dpZ-cL-aom"/>
+                                <exclude reference="3gh-Y8-CdY"/>
+                                <exclude reference="uaG-IP-aDX"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="Kbb-sF-wvd"/>
+                                <exclude reference="mSM-us-UAc"/>
+                                <exclude reference="5zq-eN-PlB"/>
+                                <exclude reference="NQo-C6-R87"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Sound Effects" id="o2v-JZ-H66"/>
                     <connections>
