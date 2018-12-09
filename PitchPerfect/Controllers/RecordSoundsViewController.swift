@@ -28,18 +28,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     // MARK: UI Lifecycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         updateUi()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "stopRecording"){
-            var controller = segue.destination as! PlaySoundsViewController
-            var url = sender as! URL
+            let controller = segue.destination as! PlaySoundsViewController
+            let url = sender as! URL
             controller.recordedAudioURL = url
         }
     }
@@ -48,13 +44,24 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     // MARK: UI Actons
     
     @IBAction func startRecordButtonPressed(_ sender: Any) {
+        let session = AVAudioSession.sharedInstance()
+        session.requestRecordPermission { (granted) in
+            DispatchQueue.main.async {
+                if granted{
+                    self.startRecording(session: session)
+                }else{
+                    DialogsHelpers().presentSimpleDialog(controller: self, title: Alerts.ErrorAccessingMicrophoneTitle, message: Alerts.ErrorAccessingMicrophoneMessage)
+                }
+            }
+        }
+    }
+    
+    func startRecording(session: AVAudioSession){
         toggleState()
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
         let recordingName = "recordedVoice.wav"
         let pathArray = [dirPath, recordingName]
         let filePath = URL(string: pathArray.joined(separator: "/"))
-        
-        let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
         
         try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
@@ -94,7 +101,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         if(flag){
             performSegue(withIdentifier: "stopRecording", sender: recorder.url)
         }else{
-            print("Recording wasn't successful")
+            DialogsHelpers().presentSimpleDialog(controller:self,title:Alerts.RecordingFailedTitle,message:Alerts.RecordingFailedMessage)
         }
     }
     
