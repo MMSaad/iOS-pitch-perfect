@@ -43,6 +43,10 @@ class PlaySoundsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        for var button in [snailButton,rabbitButton,chipmunkButton,vaderButton,echoButton,reverbButton]{
+            button?.contentMode = .scaleAspectFit
+            button?.imageView?.contentMode = .scaleAspectFit
+        }
         configureUI(.notPlaying)
     }
     
